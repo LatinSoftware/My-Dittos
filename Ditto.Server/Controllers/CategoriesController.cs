@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ditto.Server.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
-public class CategoryController : ApiBaseController
+[Route("api/v1/[controller]")]
+public class CategoriesController : ApiBaseController
 {
     [HttpGet]
     public async Task<ActionResult<List<CategoryModel>>> Get()

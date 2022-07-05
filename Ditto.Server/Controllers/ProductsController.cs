@@ -7,13 +7,13 @@ namespace Ditto.Server.Controllers;
 
 [ApiController]
 [Route("/api/v1/[controller]")]
-public class ProductController : ApiBaseController
+public class ProductsController : ApiBaseController
 {
     [HttpGet]
-    public async Task<ActionResult<List<ProductModel>>> Get([FromBody] ProductsQuery filter)
+    public async Task<ActionResult<List<ProductModel>>> Get([FromQuery] ProductsQuery productsQuery)
     {
-        var response = await Mediator.Send(filter);
-        return Ok(response);
+        var response = await Mediator.Send(productsQuery);
+        return Ok(response.Results);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<List<ProductModel>>> Get(int id)
@@ -29,8 +29,9 @@ public class ProductController : ApiBaseController
         return Created("", response);
     }
     [HttpPut("{id}")]
-    public async Task<ActionResult<int>> Put([FromBody] UpdateProductCommand command)
+    public async Task<ActionResult<int>> Put(int id, [FromBody] UpdateProductCommand command)
     {
+        command.Id = id;
         await Mediator.Send(command);
         return NoContent();
     }

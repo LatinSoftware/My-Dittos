@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using Ditto.Common.Models;
 using Ditto.Common.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,7 +39,23 @@ public class BaseRepository<TEntity>: IBaseRepository<TEntity> where TEntity : c
             return await query.ToListAsync();
         }
     }
+    public virtual async Task<PaginationModel<TEntity>> GetAsync(int skip, int limit = 10, Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+    {
+        IQueryable<TEntity> query = dbSet;
 
+        if (filter != null)
+            query = query.Where(filter);
+
+        foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            query = query.Include(includeProperty);
+
+        if (orderBy != null)
+            query = orderBy(query);
+        var totalCount = await query.CountAsync();
+        var data = await query.Skip(skip).Take(limit).ToListAsync();
+        return new PaginationModel<TEntity>(data, totalCount);
+    }
+    
     public virtual async Task<TEntity> GetByIDAsync(object id)
     {
         return await dbSet.FindAsync(id);

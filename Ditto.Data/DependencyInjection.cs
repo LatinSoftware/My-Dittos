@@ -14,7 +14,7 @@ public static class DependencyInjection
 
         services.AddDbContext<ApplicationContext>(opt =>
         {
-            opt.UseSqlite();
+            opt.UseSqlite("Data Source=../ditto.db;");
         });
         return services;
     }

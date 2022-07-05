@@ -6,9 +6,12 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly ApplicationContext context;
     public ICategoryRepository Categories  { get; }
-    public UnitOfWork(ApplicationContext context, ICategoryRepository categoryRepository)
+    public IProductRepository Products { get; }
+
+    public UnitOfWork(ApplicationContext context, ICategoryRepository categoryRepository, IProductRepository productRepository)
     {
         Categories = categoryRepository;
+        Products = productRepository;
         this.context = context;
     }
 

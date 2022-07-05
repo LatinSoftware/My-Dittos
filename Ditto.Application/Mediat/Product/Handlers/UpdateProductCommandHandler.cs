@@ -18,9 +18,11 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
     }
     public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {
-        if(! await repositories.Products.Exist(request.Id)) throw new Exception("Product do not exist");
-        var product = mapper.Map<product>(request);
-        repositories.Products.Update(product);
+        var product = await repositories.Products.GetByIDAsync(request.Id);
+        if(product == null) throw new KeyNotFoundException();
+        product.CategoryId = request.CategoryId > 0 ? request.CategoryId : product.CategoryId;
+        product.Name = !string.IsNullOrEmpty(request.Name) ? request.Name : product.Name;
+        product.ImageUrl = !string.IsNullOrEmpty(request.ImageUrl) ? request.ImageUrl : product.ImageUrl;
         if(! await repositories.SaveChangesAsync()) throw new Exception("Could not save product");
         return Unit.Value;
     }

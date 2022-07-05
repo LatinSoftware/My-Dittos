@@ -18,7 +18,7 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
     public async Task<Unit> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
     {
         var category = await repositories.Categories.GetByIDAsync(request.Id);
-        if(category == null) throw new Exception("Category Not Found");
+        if(category == null) throw new KeyNotFoundException("Category Not Found");
         category.Name = request.Name;
         if(! await repositories.SaveChangesAsync()) throw new Exception("Could not save data");
         return Unit.Value;

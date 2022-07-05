@@ -1,6 +1,7 @@
 using AutoMapper;
 using Ditto.Application.Mediat.Category.Models;
 using Ditto.Application.Mediat.Category.Queries;
+using Ditto.Common.Exceptions;
 using Ditto.Common.Repositories;
 using MediatR;
 
@@ -19,7 +20,7 @@ public class CategoryByIdQueryHandler : IRequestHandler<CategoryByIdQuery, Categ
     public async Task<CategoryModel> Handle(CategoryByIdQuery request, CancellationToken cancellationToken)
     {
         var category = await repositories.Categories.GetByIDAsync(request.Id);
-        if(category == null) throw new Exception("Categoria no encontrada");
+        if(category == null) throw new BusinessException("Categoria no encontrada");
         return mapper.Map<CategoryModel>(category);
     }
 }

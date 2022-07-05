@@ -3,6 +3,7 @@ using Ditto.Application.Mediat.Category.Commands;
 using Ditto.Common.Repositories;
 using category = Ditto.Common.Domain.Category;
 using MediatR;
+using Ditto.Common.Exceptions;
 
 namespace Ditto.Application.Mediat.Category.Handlers;
 
@@ -19,7 +20,7 @@ public class InsertCategoryCommandHandler : IRequestHandler<InsertCategoryComman
     public async Task<int> Handle(InsertCategoryCommand request, CancellationToken cancellationToken)
     {
         var categories = await repositories.Categories.GetAsync(filter: f => f.Name.ToLower().Contains(request.Name.ToLower()));
-        if(categories.Any()) throw new Exception("Category already exist");
+        if(categories.Any()) throw new BusinessException("Category already exist");
         var category = mapper.Map<category>(request);
         await repositories.Categories.InsertAsync(category);
         if(! await repositories.SaveChangesAsync()) throw new Exception("Could not save data");

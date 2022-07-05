@@ -1,5 +1,6 @@
 using AutoMapper;
 using Ditto.Application.Mediat.Category.Commands;
+using Ditto.Common.Exceptions;
 using Ditto.Common.Repositories;
 using MediatR;
 
@@ -18,7 +19,7 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
     public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
     {
         var category = await repositories.Categories.GetByIDAsync(request.Id);
-        if(category == null) throw new Exception("Categoria no encontrada");
+        if(category == null) throw new BusinessException("Categoria no encontrada");
         repositories.Categories.Delete(category);
         return Unit.Value;
     }

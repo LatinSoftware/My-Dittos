@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ditto.Application\Ditto.Application.csproj" />
+    <ProjectReference Include="..\Ditto.Data\Ditto.Data.csproj" />
+  </ItemGroup>
+
 </Project>

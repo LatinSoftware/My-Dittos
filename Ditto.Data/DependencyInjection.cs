@@ -7,7 +7,7 @@ namespace Ditto.Data;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddData(IServiceCollection  services)
+    public static IServiceCollection AddData(this IServiceCollection  services)
     {
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();

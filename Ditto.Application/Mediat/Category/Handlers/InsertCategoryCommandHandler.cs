@@ -6,12 +6,12 @@ using MediatR;
 
 namespace Ditto.Application.Mediat.Category.Handlers;
 
-public class InserCategoryCommandHandler : IRequestHandler<InsertCategoryCommand, int>
+public class InsertCategoryCommandHandler : IRequestHandler<InsertCategoryCommand, int>
 {
     private readonly IUnitOfWork repositories;
     private readonly IMapper mapper;
 
-    public InserCategoryCommandHandler(IUnitOfWork repositories, IMapper mapper)
+    public InsertCategoryCommandHandler(IUnitOfWork repositories, IMapper mapper)
     {
         this.repositories = repositories;
         this.mapper = mapper;

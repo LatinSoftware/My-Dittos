@@ -1,5 +1,4 @@
 using Ditto.Application.Mediat.Dittos.Commands;
-using Ditto.Application.Mediat.Product.Validators;
 using Ditto.Common.Repositories;
 using FluentValidation;
 

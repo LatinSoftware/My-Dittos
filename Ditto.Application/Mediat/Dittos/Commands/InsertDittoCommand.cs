@@ -6,7 +6,6 @@ namespace Ditto.Application.Mediat.Dittos.Commands;
 
 public class InsertDittoCommand : IRequest<int>
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public int FrecuencyTime { get; set; }
     public FrecuencyEnum Frecuency { get; set; }

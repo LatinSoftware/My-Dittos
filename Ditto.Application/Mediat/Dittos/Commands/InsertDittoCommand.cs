@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Ditto.Application.Mediat.Dittos.Commands;
 
-public class InsertDittoCommand : IRequest<DittoModel>
+public class InsertDittoCommand : IRequest<int>
 {
     public int Id { get; set; }
     public string Name { get; set; }

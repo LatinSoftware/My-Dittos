@@ -1,5 +1,6 @@
 using AutoMapper;
 using Ditto.Application.Mediat.Dittos.Commands;
+using Ditto.Common.Exceptions;
 using Ditto.Common.Repositories;
 using MediatR;
 
@@ -18,6 +19,8 @@ public class InsertDittoCommandHandler : IRequestHandler<InsertDittoCommand, int
 
     public async Task<int> Handle(InsertDittoCommand request, CancellationToken cancellationToken)
     {
+        if(! await repositories.Products.Exist(request.ProductId))
+            throw new BusinessException("Product don't exist in products list");
         var ditto = mapper.Map<Ditto.Common.Domain.Ditto>(request);
         await repositories.Dittos.InsertAsync(ditto);
         if(! await repositories.SaveChangesAsync())

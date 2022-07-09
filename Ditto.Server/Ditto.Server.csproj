@@ -18,6 +18,13 @@
   <ItemGroup>
     <ProjectReference Include="..\Ditto.Application\Ditto.Application.csproj" />
     <ProjectReference Include="..\Ditto.Data\Ditto.Data.csproj" />
+    <ProjectReference Include="..\Ditto.Infraestructure\Ditto.Infraestructure.csproj" />
   </ItemGroup>
 
+  <Target Name="CopyJsonCredentials" AfterTargets="AfterBuild">
+    <Copy SourceFiles="credentials.json" DestinationFolder="$(OutDir)" />
+  </Target>
+  <Target Name="CopyJsonCredentials" AfterTargets="Publish">
+    <Copy SourceFiles="credentials.json" DestinationFolder="$(PublishDir)" />
+  </Target>
 </Project>

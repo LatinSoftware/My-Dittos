@@ -7,4 +7,5 @@ public class Product
     public string ImageUrl { get; set; }
     public int CategoryId { get; set; }
     public Category Category { get; set; }
+    public ICollection<Ditto> Dittos { get; set; } = new HashSet<Ditto>();
 }

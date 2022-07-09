@@ -1,5 +1,6 @@
 using Ditto.Application;
 using Ditto.Data;
+using Ditto.Infraestructure;
 using Ditto.Server.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddData();
 builder.Services.AddApplication();
+builder.Services.AddInfraestructure("./credentials.json");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

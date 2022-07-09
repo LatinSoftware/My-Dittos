@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ditto.Web", "Ditto.Web\Ditto.Web.csproj", "{B92940C9-7FAD-4005-9568-3BE8B8C11C6F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ditto.Server", "Ditto.Server\Ditto.Server.csproj", "{F185299D-5348-40E6-BDDC-6DB7B96E17C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ditto.Data", "Ditto.Data\Ditto.Data.csproj", "{362A0022-BD14-4F70-9712-A8D3A81F0E09}"
@@ -24,10 +22,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B92940C9-7FAD-4005-9568-3BE8B8C11C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B92940C9-7FAD-4005-9568-3BE8B8C11C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B92940C9-7FAD-4005-9568-3BE8B8C11C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B92940C9-7FAD-4005-9568-3BE8B8C11C6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F185299D-5348-40E6-BDDC-6DB7B96E17C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F185299D-5348-40E6-BDDC-6DB7B96E17C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F185299D-5348-40E6-BDDC-6DB7B96E17C6}.Release|Any CPU.ActiveCfg = Release|Any CPU

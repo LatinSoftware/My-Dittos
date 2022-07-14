@@ -51,7 +51,7 @@ public class GoogleCalendarService : ICalendarService
         }
         return eventsList;
     }
-    public async Task InsertEvent(CalendarEventModel calendarRequest)
+    public async Task<string> InsertEvent(CalendarEventModel calendarRequest)
     {
         // Define parameters of request.
         var body = new Event()
@@ -72,6 +72,7 @@ public class GoogleCalendarService : ICalendarService
         EventsResource.InsertRequest request = service.Events.Insert(body, calendarId);
         Event createdEvent = await request.ExecuteAsync();
         Console.WriteLine("Event created: {0}", createdEvent.HtmlLink);
+        return createdEvent.Id;
     }
 
     public async Task UpdateEvent(string eventId, CalendarEventModel calendarRequest)

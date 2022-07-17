@@ -39,6 +39,9 @@ public class BaseRepository<TEntity>: IBaseRepository<TEntity> where TEntity : c
             return await query.ToListAsync();
         }
     }
+// LatinSoftware on Jul 5, 2022 at 10:15 AM
+// This method allow us to get filtered data from database with relational data if
+// necesary and pagination
     public virtual async Task<PaginationModel<TEntity>> GetAsync(int skip, int limit = 10, Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
     {
         IQueryable<TEntity> query = dbSet;

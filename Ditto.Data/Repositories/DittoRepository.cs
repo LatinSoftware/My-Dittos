@@ -16,6 +16,7 @@ public class DittoRepository : BaseRepository<Ditto.Common.Domain.Ditto>, IDitto
     public async Task<PaginationModel<ditto>> FilterAsync(DittoFilterModel filter)
     {
         var query = dbSet.AsQueryable();
+        query = query.Include(x => x.Product);
         if(!string.IsNullOrEmpty(filter.Name))
             query = query.Where(x => x.Name.ToLower().Contains(filter.Name.ToLower()));
         if(filter.ProductId.HasValue)

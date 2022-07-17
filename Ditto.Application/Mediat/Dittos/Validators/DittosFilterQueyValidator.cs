@@ -8,7 +8,7 @@ public class DittosFilterQueyValidator : AbstractValidator<DittoFilterModel>
 {
     public DittosFilterQueyValidator(IUnitOfWork repositories)
     {
-        RuleFor(d => d.Limit).NotNull().NotEmpty().When(d => d.Page.HasValue);
-        RuleFor(d => d.Page).NotNull().NotEmpty().When(d => d.Limit.HasValue);
+        RuleFor(d => d.Limit).NotNull().NotEmpty().GreaterThan(0).When(d => d.Offset.HasValue);
+        RuleFor(d => d.Offset).NotNull().NotEmpty().GreaterThan(0).When(d => d.Limit.HasValue);
     }
 }

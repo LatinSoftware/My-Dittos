@@ -52,3 +52,4 @@ ditto.db
 ditto.db-shm
 ditto.db-wal
 Ditto.Server/credentials.json
+Ditto.Server/token.json

@@ -26,8 +26,8 @@ public class DittoRepository : BaseRepository<Ditto.Common.Domain.Ditto>, IDitto
         var data = new List<ditto>();
         if(filter.Limit.HasValue)
         {
-            var page = filter.Offset.HasValue ? filter.Offset.Value : 1;
-            data = await query.Skip((page - 1 ) * filter.Limit.Value).Take(filter.Limit.Value).ToListAsync();
+            var page = filter.Offset.HasValue ? filter.Offset.Value : 0;
+            data = await query.Skip(page  * filter.Limit.Value).Take(filter.Limit.Value).ToListAsync();
         }else
             data = await query.ToListAsync();
         return new PaginationModel<ditto>(data, count);    

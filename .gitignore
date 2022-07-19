@@ -51,5 +51,6 @@ My-Dittos.code-workspace
 ditto.db
 ditto.db-shm
 ditto.db-wal
-Ditto.Server/credentials.json
-Ditto.Server/token.json
+credentials.json
+token.json
+appsettings.Development.json

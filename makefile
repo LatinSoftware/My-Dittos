@@ -6,3 +6,5 @@ build:
 		dotnet build
 restore:
 		dotnet restore
+update-db:
+		dotnet ef database update -s Ditto.Server/ -p Ditto.Data/

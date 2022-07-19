@@ -48,3 +48,8 @@ My-Dittos.code-workspace
 # Built Visual Studio Code Extensions
 *.vsix
 
+ditto.db
+ditto.db-shm
+ditto.db-wal
+Ditto.Server/credentials.json
+Ditto.Server/token.json
